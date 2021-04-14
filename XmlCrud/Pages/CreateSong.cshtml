@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@using System.Data;
+@using XmlCrud.App_Code;
+
+@{ 
+    SongMethods mySongMethods = Session["playlistclass"] as SongMethods;
+    string file = Session["file"] as string;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h1>voer hier de gegevens in.</h1>
+    <form action="~/index.cshtml" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" /> <br><br>
+
+        <label for="artist">Artiest</label>
+        <input type="text" id="artist" /> <br><br>
+
+        <label for="title">Tit</label>
+        <input type="text" id="title" /> <br><br>
+
+        <label for="year">Jaar:</label>
+        <input type="number" id="year" /> <br><br>
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" /> <br><br>
+
+        <label for="time">Tijd:</label>
+        <input type="text" id="time" /> <br><br>
+
+        <label for="file">Bestandsnaam:</label>
+        <input type="text" id="file" /> <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    @if (IsPost)
+    {
+        DataRow dr = mySongMethods.GetEmtyDataRow();
+
+        dr[0] = Request.Form["id"];
+        dr[1] = Request.Form["artist"];
+        dr[2] = Request.Form["title"];
+        dr[3] = Request.Form["year"];
+        dr[4] = Request.Form["genre"];
+        dr[5] = Request.Form["time"];
+        dr[6] = Request.Form["file"];
+
+        mySongMethods.CreateSong(dr, file);
+        Response.Redirect(@"~/index.cshtml");
+    }
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<playlist>
+	<song>
+		<id>1</id>
+		<title>Enemy of God</title>
+		<artist>Kreator</artist>
+		<year>2005</year>
+		<time>4:38</time>
+		<genre>Metal</genre>
+		<file>Kreator.tijdelijk</file>
+	</song>
+
+	<song>
+		<id>2</id>
+		<title>Alone</title>
+		<artist>Alan Walker</artist>
+		<year>2016</year>
+		<time>2:43</time>
+		<genre>Dance/Elektrone muziek</genre>
+		<file>Alone.tijdelijk</file>
+	</song>
+
+	<song>
+		<id>3</id>
+		<title>Nu Wij Niet Meer Praten</title>
+		<artist>Thijs En Jaap</artist>
+		<year>2020</year>
+		<time>3:12</time>
+		<genre>Pop</genre>
+		<file>WijNietPraten.tijdelijk</file>
+	</song>
+</playlist>
