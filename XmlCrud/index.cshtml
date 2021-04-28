@@ -4,7 +4,7 @@
 
 @{ 
     SongMethods mySongmethods = new SongMethods();
-    string file = @"/Appdata/Playlist.xml";
+    string file = @"~/App_data/Playlist.xml";
     DataSet ds = mySongmethods.GetAllSongs(file);
     Session["playlistClass"] = mySongmethods;
     Session["file"] = file;
@@ -50,7 +50,7 @@
     <br /><br />
 
    
-    <a href="~/Pages/CreateSong.cshtml">nieuwe song toevoegen(doet het nog niet)</a>
+    <a href="~/Pages/CreateSong.cshtml" class="page-link">nieuwe song toevoegen</a>
 </body>
 
 </html>

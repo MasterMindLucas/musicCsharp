@@ -32,7 +32,7 @@ namespace XmlCrud.App_Code
             dtSong.Columns.Add(dcTime);
             dtSong.Columns.Add(dcFile);
 
-            ds.ReadXml(HttpContext.Current.Server.MapPath("App_Data/Playlist.xml"));
+            ds.ReadXml(HttpContext.Current.Server.MapPath("~/App_Data/PlayList.xml"));
             return ds;
         }
         public DataRow GetEmtyDataRow()
@@ -41,10 +41,10 @@ namespace XmlCrud.App_Code
             return dr;
         }
 
-        public void CreateSong(DataRow dataRow, string file)
+        public void CreateSong(DataRow dataRow)
         {
             ds.Tables["song"].Rows.Add(dataRow);
-            ds.WriteXml(HttpContext.Current.Server.MapPath(file));
+            ds.WriteXml(HttpContext.Current.Server.MapPath("~/App_Data/PlayList.xml"));
         }
 
     }

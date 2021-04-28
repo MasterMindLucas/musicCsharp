@@ -8,7 +8,7 @@
 @using XmlCrud.App_Code;
 
 @{ 
-    SongMethods mySongMethods = Session["playlistclass"] as SongMethods;
+    SongMethods mySongMethods = Session["playlistClass"] as SongMethods;
     string file = Session["file"] as string;
 }
 
@@ -18,28 +18,59 @@
     <title></title>
 </head>
 <body>
+    <b><a href="~/index.cshtml">index</a></b>
+
     <h1>voer hier de gegevens in.</h1>
-    <form action="~/index.cshtml" method="post">
-        <label for="id">ID:</label>
-        <input type="text" id="id" /> <br><br>
+    <form class="" method="post" action="#">
 
-        <label for="artist">Artiest</label>
-        <input type="text" id="artist" /> <br><br>
+        <div class="form-group row">
+            <label for="id">ID:</label>
+            <div class="col-sm-10">
+                <input type="text" id="id" name="id" placeholder="ID" /> <br><br>
+            </div>
+        </div>
 
-        <label for="title">Tit</label>
-        <input type="text" id="title" /> <br><br>
+        <div class="form-group row">
+            <label for="artist">Artiest:</label>
+            <div class="col-sm-10">
+                <input type="text" id="artist" name="artist" placeholder="Artist" /> <br><br>
+            </div>
+        </div>
 
-        <label for="year">Jaar:</label>
-        <input type="number" id="year" /> <br><br>
+        <div class="form-group row">
+            <label for="title">Titel:</label>
+            <div class="col-sm-10">
+                <input type="text" id="title" name="title" placeholder="Title" /> <br><br>
+            </div>
+        </div>
 
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" /> <br><br>
+        <div class="form-group row">
+            <label for="year">Jaar:</label>
+            <div class="col-sm-10">
+                <input type="text" id="year" name="year" placeholder="year" /> <br><br>
+            </div>
+        </div>
 
-        <label for="time">Tijd:</label>
-        <input type="text" id="time" /> <br><br>
+        <div class="form-group row">
+            <label for="genre">Genre:</label>
+            <div class="col-sm-10">
+                <input type="text" id="genre" name="genre" placeholder="genre" /> <br><br>
+            </div>
+        </div>
 
-        <label for="file">Bestandsnaam:</label>
-        <input type="text" id="file" /> <br><br>
+        <div class="form-group row">
+            <label for="time">Tijd:</label>
+            <div class="col-sm-10">
+                <input type="text" id="time" name="time" placeholder="Time" /> <br><br>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="file">Bestandsnaam:</label>
+            <div class="col-sm-10">
+                <input type="text" id="file" name="file" placeholder="FileName" /> <br><br>
+            </div>
+        </div>
 
         <input type="submit" value="Submit">
     </form>
@@ -48,15 +79,15 @@
     {
         DataRow dr = mySongMethods.GetEmtyDataRow();
 
-        dr[0] = Request.Form["id"];
-        dr[1] = Request.Form["artist"];
-        dr[2] = Request.Form["title"];
-        dr[3] = Request.Form["year"];
-        dr[4] = Request.Form["genre"];
-        dr[5] = Request.Form["time"];
-        dr[6] = Request.Form["file"];
+        dr["id"] = Request.Form["id"];
+        dr["artist"] = Request.Form["artist"];
+        dr["title"] = Request.Form["title"];
+        dr["year"] = Request.Form["year"];
+        dr["genre"] = Request.Form["genre"];
+        dr["time"] = Request.Form["time"];
+        dr["file"] = Request.Form["file"];
 
-        mySongMethods.CreateSong(dr, file);
+        mySongMethods.CreateSong(dr);
         Response.Redirect(@"~/index.cshtml");
     }
 
