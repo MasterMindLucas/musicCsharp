@@ -47,6 +47,16 @@ namespace XmlCrud.App_Code
             ds.WriteXml(HttpContext.Current.Server.MapPath("~/App_Data/PlayList.xml"));
         }
 
+        public void DeleteSong(string id, string file)
+        {
+            DataRow[] drArray = ds.Tables["song"].Select("id = '" + id + "'");
+            if (drArray != null && drArray.Length > 0)
+            {
+                drArray[0].Delete();
+                ds.WriteXml(HttpContext.Current.Server.MapPath(file));
+            }
+        }
+
     }
     
 }

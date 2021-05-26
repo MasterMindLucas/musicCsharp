@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+@using System.Data;
+@using XmlCrud.App_Code;
+
+@{ 
+    SongMethods mysongMethods = Session["playlistclass"] as SongMethods;
+    string file = Session["file"] as string;
+}
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        Weet je zeker dat je dit wilt verwijderen? <br /> <br />
+
+        <form method="post">
+            Yes: <input type="radio" name="keuze" value="ja" />
+            <br />
+            No: <input type="radio" name="keuze" value="nee" />
+            <br />
+
+            <input type="submit" name="ConfirmDelete" class="ConfirmDelete" value="Insert" />
+
+        </form>
+        @if (IsPost)
+        {
+            if (Request.Form["keuze"] == "ja")
+            {
+                string id = Request.QueryString["id"];
+                mysongMethods.DeleteSong(id, file);
+            }
+
+            Response.Redirect(@"~/index/cshtml");
+
+        }
+       
+
+
+
+    </div>
+</body>
+</html>
