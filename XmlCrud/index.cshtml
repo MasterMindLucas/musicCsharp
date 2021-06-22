@@ -35,16 +35,17 @@
     
         @foreach (DataRow dr in ds.Tables["song"].Rows)
         {
-            <tr>
-                <td>@dr["id"]</td>
-                <td>@dr["artist"]</td>
-                <td>@dr["title"]</td>
-                <td>@dr["year"]</td>
-                <td>@dr["genre"]</td>
-                <td>@dr["time"]</td>
-                <td>@dr["file"]</td>
-                <td><a href="~/Pages/DeleteSong.cshtml?id=@dr["id"]">Delete</a></td>
-            </tr>
+    <tr>
+        <td>@dr["id"]</td>
+        <td>@dr["artist"]</td>
+        <td>@dr["title"]</td>
+        <td>@dr["year"]</td>
+        <td>@dr["genre"]</td>
+        <td>@dr["time"]</td>
+        <td>@dr["file"]</td>
+        <td><a href="~/Pages/DeleteSong.cshtml?id=@dr["id"]">Delete</a></td>
+        <td><a href="~/Pages/EditSong.cshtml?id=@dr["id"]">Edit</a></td>
+    </tr>
         }
     </table>
 
